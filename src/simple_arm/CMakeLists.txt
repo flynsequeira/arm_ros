@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+lcmake_minimum_required(VERSION 2.8.3)
 project(simple_arm)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
@@ -47,11 +47,11 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files( 
-   FILES
-   Message1.msg
-   Message2.msg
-)
+# add_message_files( 
+#    FILES
+#    Message1.msg
+#    Message2.msg
+# )
 
 ### Generate services in the 'srv' folder
 add_service_files(
@@ -199,4 +199,10 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 add_executable(simple_mover src/simple_mover.cpp)
 target_link_libraries(simple_mover ${catkin_LIBRARIES})
 add_dependencies(simple_mover simple_arm_generate_messages_cpp)
+
+
+add_executable(arm_mover src/arm_mover.cpp)
+target_link_libraries(arm_mover ${catkin_LIBRARIES})
+add_dependencies(arm_mover simple_arm_generate_messages_cpp)
+
 add_compile_options(-std=c++11)

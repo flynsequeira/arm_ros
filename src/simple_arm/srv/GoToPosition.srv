@@ -1,4 +1,4 @@
-float joint_1
-float joint_2
+float64 joint_1
+float64 joint_2
 ---
 string msg_feedback
