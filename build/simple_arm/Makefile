@@ -99,17 +99,16 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target install/local
+install/local/fast: install/local
+
+.PHONY : install/local/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -122,16 +121,17 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target install/local
-install/local/fast: install/local
-
-.PHONY : install/local/fast
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,19 +166,94 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+simple_arm/CMakeFiles/arm_mover.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/arm_mover.dir/rule
+.PHONY : simple_arm/CMakeFiles/arm_mover.dir/rule
 
 # Convenience name for target.
-roscpp_generate_messages_eus: simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+arm_mover: simple_arm/CMakeFiles/arm_mover.dir/rule
 
-.PHONY : roscpp_generate_messages_eus
+.PHONY : arm_mover
 
 # fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build.make simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
+arm_mover/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/arm_mover.dir/build.make simple_arm/CMakeFiles/arm_mover.dir/build
+.PHONY : arm_mover/fast
+
+# Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_gennodejs.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_gennodejs.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_gennodejs.dir/rule
+
+# Convenience name for target.
+simple_arm_gennodejs: simple_arm/CMakeFiles/simple_arm_gennodejs.dir/rule
+
+.PHONY : simple_arm_gennodejs
+
+# fast build rule for target.
+simple_arm_gennodejs/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_gennodejs.dir/build.make simple_arm/CMakeFiles/simple_arm_gennodejs.dir/build
+.PHONY : simple_arm_gennodejs/fast
+
+# Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_genlisp.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_genlisp.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_genlisp.dir/rule
+
+# Convenience name for target.
+simple_arm_genlisp: simple_arm/CMakeFiles/simple_arm_genlisp.dir/rule
+
+.PHONY : simple_arm_genlisp
+
+# fast build rule for target.
+simple_arm_genlisp/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_genlisp.dir/build.make simple_arm/CMakeFiles/simple_arm_genlisp.dir/build
+.PHONY : simple_arm_genlisp/fast
+
+# Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_geneus.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_geneus.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_geneus.dir/rule
+
+# Convenience name for target.
+simple_arm_geneus: simple_arm/CMakeFiles/simple_arm_geneus.dir/rule
+
+.PHONY : simple_arm_geneus
+
+# fast build rule for target.
+simple_arm_geneus/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_geneus.dir/build.make simple_arm/CMakeFiles/simple_arm_geneus.dir/build
+.PHONY : simple_arm_geneus/fast
+
+# Convenience name for target.
+simple_arm/CMakeFiles/simple_mover.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_mover.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_mover.dir/rule
+
+# Convenience name for target.
+simple_mover: simple_arm/CMakeFiles/simple_mover.dir/rule
+
+.PHONY : simple_mover
+
+# fast build rule for target.
+simple_mover/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_mover.dir/build.make simple_arm/CMakeFiles/simple_mover.dir/build
+.PHONY : simple_mover/fast
+
+# Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_generate_messages_eus.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_generate_messages_eus.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+simple_arm_generate_messages_eus: simple_arm/CMakeFiles/simple_arm_generate_messages_eus.dir/rule
+
+.PHONY : simple_arm_generate_messages_eus
+
+# fast build rule for target.
+simple_arm_generate_messages_eus/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_generate_messages_eus.dir/build.make simple_arm/CMakeFiles/simple_arm_generate_messages_eus.dir/build
+.PHONY : simple_arm_generate_messages_eus/fast
 
 # Convenience name for target.
 simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_py.dir/rule:
@@ -196,6 +271,21 @@ controller_manager_msgs_generate_messages_py/fast:
 .PHONY : controller_manager_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+simple_arm_generate_messages_nodejs: simple_arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/rule
+
+.PHONY : simple_arm_generate_messages_nodejs
+
+# fast build rule for target.
+simple_arm_generate_messages_nodejs/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/build.make simple_arm/CMakeFiles/simple_arm_generate_messages_nodejs.dir/build
+.PHONY : simple_arm_generate_messages_nodejs/fast
+
+# Convenience name for target.
 simple_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
 	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 .PHONY : simple_arm/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
@@ -211,6 +301,21 @@ roscpp_generate_messages_cpp/fast:
 .PHONY : roscpp_generate_messages_cpp/fast
 
 # Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_generate_messages_py.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_generate_messages_py.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_generate_messages_py.dir/rule
+
+# Convenience name for target.
+simple_arm_generate_messages_py: simple_arm/CMakeFiles/simple_arm_generate_messages_py.dir/rule
+
+.PHONY : simple_arm_generate_messages_py
+
+# fast build rule for target.
+simple_arm_generate_messages_py/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_generate_messages_py.dir/build.make simple_arm/CMakeFiles/simple_arm_generate_messages_py.dir/build
+.PHONY : simple_arm_generate_messages_py/fast
+
+# Convenience name for target.
 simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/rule:
 	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/rule
 .PHONY : simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/rule
@@ -224,6 +329,21 @@ controller_manager_msgs_generate_messages_cpp: simple_arm/CMakeFiles/controller_
 controller_manager_msgs_generate_messages_cpp/fast:
 	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build.make simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_cpp.dir/build
 .PHONY : controller_manager_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_generate_messages.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_generate_messages.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_generate_messages.dir/rule
+
+# Convenience name for target.
+simple_arm_generate_messages: simple_arm/CMakeFiles/simple_arm_generate_messages.dir/rule
+
+.PHONY : simple_arm_generate_messages
+
+# fast build rule for target.
+simple_arm_generate_messages/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_generate_messages.dir/build.make simple_arm/CMakeFiles/simple_arm_generate_messages.dir/build
+.PHONY : simple_arm_generate_messages/fast
 
 # Convenience name for target.
 simple_arm/CMakeFiles/roscpp_generate_messages_py.dir/rule:
@@ -346,6 +466,21 @@ std_msgs_generate_messages_nodejs/fast:
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+simple_arm_generate_messages_lisp: simple_arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/rule
+
+.PHONY : simple_arm_generate_messages_lisp
+
+# fast build rule for target.
+simple_arm_generate_messages_lisp/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/build.make simple_arm/CMakeFiles/simple_arm_generate_messages_lisp.dir/build
+.PHONY : simple_arm_generate_messages_lisp/fast
+
+# Convenience name for target.
 simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/rule:
 	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/rule
 .PHONY : simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_lisp.dir/rule
@@ -361,6 +496,21 @@ controller_manager_msgs_generate_messages_lisp/fast:
 .PHONY : controller_manager_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_genpy.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_genpy.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_genpy.dir/rule
+
+# Convenience name for target.
+simple_arm_genpy: simple_arm/CMakeFiles/simple_arm_genpy.dir/rule
+
+.PHONY : simple_arm_genpy
+
+# fast build rule for target.
+simple_arm_genpy/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_genpy.dir/build.make simple_arm/CMakeFiles/simple_arm_genpy.dir/build
+.PHONY : simple_arm_genpy/fast
+
+# Convenience name for target.
 simple_arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
 	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
 .PHONY : simple_arm/CMakeFiles/std_msgs_generate_messages_py.dir/rule
@@ -374,6 +524,21 @@ std_msgs_generate_messages_py: simple_arm/CMakeFiles/std_msgs_generate_messages_
 std_msgs_generate_messages_py/fast:
 	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/std_msgs_generate_messages_py.dir/build.make simple_arm/CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_gencpp.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_gencpp.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_gencpp.dir/rule
+
+# Convenience name for target.
+simple_arm_gencpp: simple_arm/CMakeFiles/simple_arm_gencpp.dir/rule
+
+.PHONY : simple_arm_gencpp
+
+# fast build rule for target.
+simple_arm_gencpp/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_gencpp.dir/build.make simple_arm/CMakeFiles/simple_arm_gencpp.dir/build
+.PHONY : simple_arm_gencpp/fast
 
 # Convenience name for target.
 simple_arm/CMakeFiles/controller_manager_msgs_generate_messages_eus.dir/rule:
@@ -466,19 +631,76 @@ controller_manager_msgs_generate_messages_nodejs/fast:
 .PHONY : controller_manager_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-simple_arm/CMakeFiles/simple_mover.dir/rule:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_mover.dir/rule
-.PHONY : simple_arm/CMakeFiles/simple_mover.dir/rule
+simple_arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/rule
+.PHONY : simple_arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/rule
 
 # Convenience name for target.
-simple_mover: simple_arm/CMakeFiles/simple_mover.dir/rule
+_simple_arm_generate_messages_check_deps_GoToPosition: simple_arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/rule
 
-.PHONY : simple_mover
+.PHONY : _simple_arm_generate_messages_check_deps_GoToPosition
 
 # fast build rule for target.
-simple_mover/fast:
-	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_mover.dir/build.make simple_arm/CMakeFiles/simple_mover.dir/build
-.PHONY : simple_mover/fast
+_simple_arm_generate_messages_check_deps_GoToPosition/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/build.make simple_arm/CMakeFiles/_simple_arm_generate_messages_check_deps_GoToPosition.dir/build
+.PHONY : _simple_arm_generate_messages_check_deps_GoToPosition/fast
+
+# Convenience name for target.
+simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_eus: simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build.make simple_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
+
+# Convenience name for target.
+simple_arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/rule:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 simple_arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/rule
+.PHONY : simple_arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+simple_arm_generate_messages_cpp: simple_arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/rule
+
+.PHONY : simple_arm_generate_messages_cpp
+
+# fast build rule for target.
+simple_arm_generate_messages_cpp/fast:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/build.make simple_arm/CMakeFiles/simple_arm_generate_messages_cpp.dir/build
+.PHONY : simple_arm_generate_messages_cpp/fast
+
+src/arm_mover.o: src/arm_mover.cpp.o
+
+.PHONY : src/arm_mover.o
+
+# target to build an object file
+src/arm_mover.cpp.o:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/arm_mover.dir/build.make simple_arm/CMakeFiles/arm_mover.dir/src/arm_mover.cpp.o
+.PHONY : src/arm_mover.cpp.o
+
+src/arm_mover.i: src/arm_mover.cpp.i
+
+.PHONY : src/arm_mover.i
+
+# target to preprocess a source file
+src/arm_mover.cpp.i:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/arm_mover.dir/build.make simple_arm/CMakeFiles/arm_mover.dir/src/arm_mover.cpp.i
+.PHONY : src/arm_mover.cpp.i
+
+src/arm_mover.s: src/arm_mover.cpp.s
+
+.PHONY : src/arm_mover.s
+
+# target to generate assembly for a file
+src/arm_mover.cpp.s:
+	cd /home/workspace/catkin_ws/build && $(MAKE) -f simple_arm/CMakeFiles/arm_mover.dir/build.make simple_arm/CMakeFiles/arm_mover.dir/src/arm_mover.cpp.s
+.PHONY : src/arm_mover.cpp.s
 
 src/simple_mover.o: src/simple_mover.cpp.o
 
@@ -517,11 +739,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... edit_cache"
-	@echo "... roscpp_generate_messages_eus"
+	@echo "... install/local"
+	@echo "... arm_mover"
+	@echo "... simple_arm_gennodejs"
+	@echo "... simple_arm_genlisp"
+	@echo "... install/strip"
+	@echo "... simple_arm_geneus"
+	@echo "... simple_mover"
+	@echo "... simple_arm_generate_messages_eus"
 	@echo "... controller_manager_msgs_generate_messages_py"
+	@echo "... simple_arm_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... install"
+	@echo "... simple_arm_generate_messages_py"
 	@echo "... controller_manager_msgs_generate_messages_cpp"
+	@echo "... simple_arm_generate_messages"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_lisp"
@@ -530,17 +762,23 @@ help:
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... simple_arm_generate_messages_lisp"
 	@echo "... controller_manager_msgs_generate_messages_lisp"
+	@echo "... simple_arm_genpy"
 	@echo "... std_msgs_generate_messages_py"
+	@echo "... simple_arm_gencpp"
 	@echo "... controller_manager_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... controller_manager_msgs_generate_messages_nodejs"
-	@echo "... simple_mover"
-	@echo "... install/strip"
-	@echo "... install/local"
+	@echo "... _simple_arm_generate_messages_check_deps_GoToPosition"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... simple_arm_generate_messages_cpp"
+	@echo "... src/arm_mover.o"
+	@echo "... src/arm_mover.i"
+	@echo "... src/arm_mover.s"
 	@echo "... src/simple_mover.o"
 	@echo "... src/simple_mover.i"
 	@echo "... src/simple_mover.s"
